@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Dell XPS 9510. Not great, not terrible. | finisher.cz</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="Dell XPS 9510. Not great, not terrible." />
+<meta name="author" content="Aleš Kozumplík" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="/xps9510.html" />
+<meta property="og:url" content="/xps9510.html" />
+<meta property="og:site_name" content="finisher.cz" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Dell XPS 9510. Not great, not terrible." />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Aleš Kozumplík"},"headline":"Dell XPS 9510. Not great, not terrible.","url":"/xps9510.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="finisher.cz" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">finisher.cz</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/rational_eating.html">A guide to rational eating</a><a class="page-link" href="/xps9510.html">Dell XPS 9510. Not great, not terrible.</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="home"><h1 class="page-heading">Dell XPS 9510. Not great, not terrible.</h1><p>(March 2023)</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>After five fine years on a not-great-but-solid 15” Dell XPS 9560 I finally got an upgrade: the latest &amp; greatest Dell XPS 9510.</p>
+
+<p>My expectations were not huge. It should run modern Linux. It should be an i7 or an i9 so I can see IntelliJ finish importing projects in this lifetime. I casual-game on weekends so there should be some sort of a GPU. Reasonable range of ports, including a headphone jack. It would be lovely to get six or seven hours of battery of office work for the days on the road (that’s with wifi but no video playback, no streaming and no gaming).</p>
+
+<p>The 9510 was about £2.1k new, one of the best specced mainstream laptops you could get in 2022 outside of the Macbook sphere of things. I was looking forward. Six months later I’m thinking I should have gotten a ThinkPad. This might end up a rant.</p>
+
+<h2 id="in-linux">In Linux</h2>
+
+<p>The good news is Fedora 36 installs without hassle. I also tried Fedora 37 which also worked.</p>
+
+<p>First thing I tested after boot: battery drain unplugged when idling. A whopping 27 W! Not completely unexpected, the open source NVidia drivers (AKA nouveau) are known to cause this. So in went <a href="https://rpmfusion.org/Howto/NVIDIA">NVIdia akmods</a>. Shout-out to the RPM Fusion community, you are doing God’s work.</p>
+
+<p>Rebooting like that the Linux part of things worked OK. Then, over the next few days, as I began spending hours working and traveling with the computer, the dirt started to come out.</p>
+
+<h3 id="stew-of-disappointment">Stew of Disappointment</h3>
+
+<p>The first and biggest issue is actually quick to spot: lack of true suspend. Closing the lid puts the computer to some sort of sleep but if it is not plugged into power source it drains battery at about 3% an hour. This problem is <em>not Linux-specific</em> but inherent to modern Intel chipsets. The laptop’s firmware does not support what the traditional “Standby” or “S3” sleep state. Instead, it has the “S0” suspend which lets some applications keep running under some conditions. See e.g. <a href="https://www.dell.com/community/XPS/XPS-15-9510-fails-to-sleep/td-p/8057567">here</a>. There is no hope in Dell fixing this, the official response is something like “use hibernate”. Leaving the laptop with half-empty battery in a bag overnight welcomes me with 10% left in the morning. But hey, the wifi stayed connected.</p>
+
+<p>Second issue, the battery drain for office / programming work in Linux is still sort of high. I never got more than 5.5 hours without plugging into the wall.</p>
+
+<p>Third, Occasionally the system won’t wake up from the S0 sleep. Like the keyboard backlight comes on but not the screen. This is <em>probably due to the proprietary NVidia Linux drivers</em> as my previous XPS was having this same issue.</p>
+
+<p>Fourth, about 60% of time coming out of sleep the laptop detects a lower-than-native resolution of the external display. Everything looks big and ugly like that. It happens with either USB-C or HDMI connections and is also Linux-specific. The remedy forcing re-detection.</p>
+
+<p>Fifth, if I don’t play music but keep the headphones plugged into the jack port they will make annoying loud buzzing sound. Not an issue outside of Linux, most likely it’s <a href="https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/1801">pipewire’s doing</a>.</p>
+
+<h2 id="in-windows">In Windows</h2>
+
+<p>Except for no proper suspend mode, Windows use does not suffer from the above problems. Surely I can fire up this monster with i7-11800H and GeForce RTX 3050 and have a great gaming session on a Sunday night, yes? No.</p>
+
+<p>The first problem has to do with thermal management. See the CPU and the mobile GPU chip are physically sitting sorta close to each other inside the laptop body and are cooled by the same heat pipe that has got a fan on each side. In this setup, if the GPU starts heating up, it will harm how well the CPU can cool down. And the other way around. Gaming will heat up both the components within minutes and the CPU starts to throttle at 100°C. You get lag and low FPS in-game.</p>
+
+<p>This exact same issue has been with the XPS since the beginning, that’s how they are constructed. The earlier XPS generations had a workaround though: we could use <a href="https://www.techpowerup.com/download/techpowerup-throttlestop/">ThrottleStop</a> or similar software and undervolt the CPU. For overwhelming majority of units it worked by keeping the CPU away from throttling temperatures practically entire game.</p>
+
+<p>So do the same here, yes? No. <em>All the BIOS versions Dell has been pushing out recently have undervolting disabled</em>. Can you get around that? Yes, by <a href="https://brendangreenley.com/undervolting-2020-dell-laptops-like-the-vostro-7500-and-more-tips-to-improve-thermals-battery-life-and-speed/">binary-hacking the BIOS image</a>. It is not for the faint of heart and inexpert execution might brick the computer.</p>
+
+<p>To clarify, I am running no fancy games on a professional laptop. I only play Starcraft 2, a 2010 game with limited requirements, known to load up to two CPU cores at a time, i.e. up to 13% of a 16-core CPU.</p>
+
+<p>Second problem: when the system properly overheats the wifi in  Windows has a tendency to drop suddenly. We’ve lost games because of this. <a href="https://www.reddit.com/r/DellXPS/comments/rftg5c/is_dell_xps_15_9510_wifi_upgradeable/">It isn’t just me.</a> Plus, in  my previous old XPS I fixed the issue by replacing the wifi card. Here, the wifi card is soldered on and can not be replaced.</p>
+
+<h2 id="reliability">Reliability</h2>
+
+<p>On a Monday morning last month the laptop failed to boot: there was a grayed out Dell logo on the screen for ages. After power cycling I got a prompt that the BIOS needs to recover (from what?). Ever since then the laptop would sometimes not charge. With the original power adapter plugged in the system would say it only supplies 15 W and the battery is discharging ever so slowly. <a href="https://www.dell.com/community/XPS/XPS-15-9500-plugged-in-but-will-not-recognize-it-is-charging/td-p/7934938">Dell knows about this problem</a> which has two common scenarios:</p>
+
+<ol>
+  <li>Better: if you turn the laptop off, unplug, wait and re-plug the charger, then boot up, it is charging normally for a few hours or days.</li>
+  <li>Worse: the laptop will absolutely never charge when powered on / sleeping, only when turned off. People needed replacing the motherboard or some other components to fix this.</li>
+</ol>
+
+<p>At least I am in the former camp.</p>
+
+<h2 id="briefly-about-the-build-quality">Briefly about the build quality</h2>
+
+<p>The screen and the keyboard are, for a laptop and by my standards, brilliant. The scissor-switch keys have a satisfying, crispy feedback. The screen is matte with the best colors I have seen on any laptop.</p>
+
+<p>There is no Ethernet port (same as every other XPS) and no legacy USB ports. USB-C connectors for everything only. Prepare to spend on a good hub, the one coming in the box only has an HDMI and a measly single USB-A.</p>
+
+<p>The build feels sturdy and the machine is a pleasure to look at, hands down. It invites productivity. With the carbon fibre keyboard frame / wrist rest I like it better than a 2022 “fat again” Macbooks.</p>
+
+<p>Over the course of the six month use I did manage to chip off a bit of the carbon fibre in lower left corner. It is not flaking further, I think, and is very small. I do not remember dropping it, naked or in a bag. Just unlucky I guess.</p>
+
+<h2 id="is-there-hope">Is there hope?</h2>
+
+<p>Yes, though it needs Dell to pay more attention to the firmware and drivers and less to how fleshy the thing looks (it looks amazing already). They should:</p>
+
+<ul>
+  <li>fix the BIOS for the charging issues,</li>
+  <li>let owners undervolt again,</li>
+  <li>sponsor one or two kernel hackers to team up with NVidia and get the proprietary drivers up to scratch,</li>
+  <li>update cooling so that 12 year old games on medium graphics will not cause CPU throttling,</li>
+  <li>look into the wifi issues on Windows.</li>
+</ul>
+
+<p>Also, call 1999 to give us our S3 suspend back.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Dell XPS 9510 (and possibly all other XPS models after 2021) are not fit for Linux. The main issues are power hunger, no state 3 suspend, failures in screen resolution detection, and constantly problematic proprietary NVidia drivers causing more suspending pain.</p>
+
+<p>The model is equally unfit for playing a decade old game due to thermal management. Should have looked elsewhere.</p>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">finisher.cz</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Aleš Kozumplík</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://www.twitter.com/akozumpl"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">akozumpl</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
