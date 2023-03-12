@@ -17,7 +17,19 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Aleš Kozumplík"},"headline":"Dell XPS 9510. Not great, not terrible.","url":"/xps9510.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="finisher.cz" /></head>
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="finisher.cz" /><script>
+if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-146776767-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+  
+</head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/">finisher.cz</a><nav class="site-nav">
@@ -47,7 +59,7 @@
 
 <h2 id="in-linux">In Linux</h2>
 
-<p>The good news is Fedora 36 installs without hassle. I also tried Fedora 37 which also worked.</p>
+<p>The good news is Fedora 36 installs without a hassle. I also tried Fedora 37 and that also worked.</p>
 
 <p>First thing I tested after boot: battery drain unplugged when idling. A whopping 27 W! Not completely unexpected, the open source NVidia drivers (AKA nouveau) are known to cause this. So in went <a href="https://rpmfusion.org/Howto/NVIDIA">NVIdia akmods</a>. Shout-out to the RPM Fusion community, you are doing God’s work.</p>
 
@@ -55,7 +67,7 @@
 
 <h3 id="stew-of-disappointment">Stew of Disappointment</h3>
 
-<p>The first and biggest issue is actually quick to spot: lack of true suspend. Closing the lid puts the computer to some sort of sleep but if it is not plugged into power source it drains battery at about 3% an hour. This problem is <em>not Linux-specific</em> but inherent to modern Intel chipsets. The laptop’s firmware does not support what the traditional “Standby” or “S3” sleep state. Instead, it has the “S0” suspend which lets some applications keep running under some conditions. See e.g. <a href="https://www.dell.com/community/XPS/XPS-15-9510-fails-to-sleep/td-p/8057567">here</a>. There is no hope in Dell fixing this, the official response is something like “use hibernate”. Leaving the laptop with half-empty battery in a bag overnight welcomes me with 10% left in the morning. But hey, the wifi stayed connected.</p>
+<p>The first and biggest issue is actually quick to spot: lack of true suspend. Closing the lid puts the computer to some sort of sleep but if it is not plugged into power source it drains battery at about 3% an hour. This problem is <em>not Linux-specific</em> but inherent to modern Intel chipsets. The laptop’s firmware does not support what traditional “Standby” AKA “S3” sleep state. Instead, it has the “S0” suspend which lets some applications keep running under some conditions. See e.g. <a href="https://www.dell.com/community/XPS/XPS-15-9510-fails-to-sleep/td-p/8057567">here</a>. Leaving the laptop with half-empty battery in a bag overnight welcomes me with 10% left in the morning. But hey, the wifi stayed connected. There is no hope in Dell fixing this, the official response is something like “use hibernate”.</p>
 
 <p>Second issue, the battery drain for office / programming work in Linux is still sort of high. I never got more than 5.5 hours without plugging into the wall.</p>
 
